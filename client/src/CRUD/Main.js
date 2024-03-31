@@ -8,6 +8,9 @@ import Delete from "./Delete";
 import View from "./View";
 import Edit from "./Edit";
 import Create from "./Create";
+import Navbar from "../Components/Navbar";
+import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 
 const Main = () => {
   const [showViewModal, setShowViewModal] = useState(false);
@@ -18,9 +21,13 @@ const Main = () => {
   const [data, setData] = useState([]);
   const [token, setToken] = useState(null);
   const [id, setId] = useState(null);
-  const [text, setText] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
+
+  if (!id || !token) {
+    navigate("/");
+  }
 
   useEffect(() => {
     const tokenFromStorage = localStorage.getItem("token");
@@ -35,10 +42,11 @@ const Main = () => {
 
   useEffect(() => {
     if (data) {
-      const filteredData = data.filter((emp) =>
-        emp?.fullname?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        emp?.mobile?.includes(searchQuery.toLowerCase()) ||
-        emp?.department?.toLowerCase().includes(searchQuery.toLowerCase()) 
+      const filteredData = data.filter(
+        (emp) =>
+          emp?.fullname?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          emp?.mobile?.includes(searchQuery.toLowerCase()) ||
+          emp?.department?.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setSearchResults(filteredData);
     }
@@ -79,6 +87,7 @@ const Main = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="container">
         <div className="crud shadow-lg p-3 mb-5 mt-5 bg-body rounded">
           <div className="row">
@@ -109,20 +118,20 @@ const Main = () => {
           </div>
 
           <div className="container">
-            {(!Array.isArray(data) &&
+            {!Array.isArray(data) &&
               data.length === 0 &&
-              searchResults.length === 0) && (
-              <div className="d-flex align-items-center justify-content-center vh-100">
-                <div className="text-center">
-                  <h1 className="display-1 fw-bold">204</h1>
-                  <p className="fs-3">
-                    <span className="text-danger">Oops!</span> Currently, there
-                    are no items found.
-                  </p>
-                  <p className="lead">Please come back after sometime..</p>
+              searchResults.length === 0 && (
+                <div className="d-flex align-items-center justify-content-center vh-100">
+                  <div className="text-center">
+                    <h1 className="display-1 fw-bold">204</h1>
+                    <p className="fs-3">
+                      <span className="text-danger">Oops!</span> Currently,
+                      there are no items found.
+                    </p>
+                    <p className="lead">Please come back after sometime..</p>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
             {searchResults.length > 0 ? (
               <div className="row my-5">
@@ -146,7 +155,8 @@ const Main = () => {
                           <td>{emp.email}</td>
                           <td>{emp.mobile}</td>
                           <td>{emp.department}</td>
-                          <td>
+                          <td >
+                            <div style={{display:"flex"}}>
                             <button
                               className="view"
                               title="View"
@@ -154,9 +164,8 @@ const Main = () => {
                               onClick={() => handleView(emp)}
                             >
                               <i className="material-icons">
-                                <PreviewIcon />
+                                <PreviewIcon style={{ width: 15, height: 15 }} />
                               </i>{" "}
-                              View
                             </button>
                             <button
                               className="edit"
@@ -165,9 +174,8 @@ const Main = () => {
                               onClick={() => handleEdit(emp)}
                             >
                               <i className="material-icons">
-                                <EditIcon />
+                                <EditIcon style={{ width: 15, height: 15 }} />
                               </i>{" "}
-                              Edit
                             </button>
                             <button
                               className="delete"
@@ -176,10 +184,10 @@ const Main = () => {
                               onClick={() => handleDelete(emp)}
                             >
                               <i className="material-icons">
-                                <DeleteIcon />
+                                <DeleteIcon style={{ width: 15, height: 15 }} />
                               </i>{" "}
-                              Delete
                             </button>
+                            </div>
                           </td>
                         </tr>
                       ))}
@@ -209,7 +217,7 @@ const Main = () => {
           <Create
             show={showCreateModal}
             handleClose={() => setShowCreateModal(false)}
-            fetchData={() => fetchProfiles()}
+            fetchData={() => fetchProfiles()}    
           />
 
           {/* Edit Modal */}

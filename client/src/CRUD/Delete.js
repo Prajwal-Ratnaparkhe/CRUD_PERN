@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Delete = ({ show, handleClose, emp }) => {

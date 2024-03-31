@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Edit = ({ show, handleClose, emp, fetchData }) => {
@@ -17,7 +17,7 @@ const Edit = ({ show, handleClose, emp, fetchData }) => {
       setToken(tokenFromStorage);
       setId(idFromStorage);
     }
-
+    console.log(emp.department);
     setEditedEmp(emp);
   }, [emp]);
 
@@ -62,7 +62,6 @@ const Edit = ({ show, handleClose, emp, fetchData }) => {
 
   return (
     <>
-     
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Edit Employee</Modal.Title>
@@ -110,10 +109,10 @@ const Edit = ({ show, handleClose, emp, fetchData }) => {
                 name="gender"
                 value={editedEmp.gender || ""}
                 onChange={handleChange}
+                defaultValue={emp.gender}
               >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Other">Other</option>
               </select>
             </div>
             <div className="form-group">
@@ -124,12 +123,24 @@ const Edit = ({ show, handleClose, emp, fetchData }) => {
                 name="department"
                 value={editedEmp.department || ""}
                 onChange={handleChange}
+                defaultValue={emp.department}
               >
-                <option value="IT">IT</option>
-                <option value="HR">HR</option>
-                <option value="Developer">Developer</option>
-                <option value="Tester">Tester</option>
-                <option value="Other">Other</option>
+                <option value="Engineering and Development">
+                  Engineering and Development
+                </option>
+                <option value="Product Management">Product Management</option>
+                <option value="Quality Assurance">Quality Assurance</option>
+                <option value="Sales and Marketing">
+                  Sales and Marketing:
+                </option>
+                <option value="Customer Support">Customer Support</option>
+                <option value="Human Resources">Human Resources</option>
+                <option value="Finance and Administration">
+                  Finance and Administration
+                </option>
+                <option value="Research and Development">
+                  Research and Development
+                </option>
               </select>
             </div>
             <div className="form-group">

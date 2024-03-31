@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
@@ -49,7 +49,7 @@ const Login = () => {
 
   return (
     <>
-      <ToastContainer />
+   
       <div id="main-wrapper" className="container py-3">
         <div className="row justify-content-center">
           <div className="col-xl-10">
