@@ -97,7 +97,7 @@ const Main = () => {
                   <input
                     className="form-control mr-sm-2"
                     type="search"
-                    placeholder="Search Student"
+                    placeholder="Search Employee"
                     aria-label="Search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -155,38 +155,42 @@ const Main = () => {
                           <td>{emp.email}</td>
                           <td>{emp.mobile}</td>
                           <td>{emp.department}</td>
-                          <td >
-                            <div style={{display:"flex"}}>
-                            <button
-                              className="view"
-                              title="View"
-                              style={{ color: "#10ab80", border: "none" }}
-                              onClick={() => handleView(emp)}
-                            >
-                              <i className="material-icons">
-                                <PreviewIcon style={{ width: 15, height: 15 }} />
-                              </i>{" "}
-                            </button>
-                            <button
-                              className="edit"
-                              title="Edit"
-                              style={{ color: "blue", border: "none" }}
-                              onClick={() => handleEdit(emp)}
-                            >
-                              <i className="material-icons">
-                                <EditIcon style={{ width: 15, height: 15 }} />
-                              </i>{" "}
-                            </button>
-                            <button
-                              className="delete"
-                              title="Delete"
-                              style={{ color: "red", border: "none" }}
-                              onClick={() => handleDelete(emp)}
-                            >
-                              <i className="material-icons">
-                                <DeleteIcon style={{ width: 15, height: 15 }} />
-                              </i>{" "}
-                            </button>
+                          <td>
+                            <div style={{ display: "flex" }}>
+                              <button
+                                className="view"
+                                title="View"
+                                style={{ color: "#10ab80", border: "none" }}
+                                onClick={() => handleView(emp)}
+                              >
+                                <i className="material-icons">
+                                  <PreviewIcon
+                                    style={{ width: 20, height: 20 }}
+                                  />
+                                </i>{" "}
+                              </button>
+                              <button
+                                className="edit"
+                                title="Edit"
+                                style={{ color: "blue", border: "none" }}
+                                onClick={() => handleEdit(emp)}
+                              >
+                                <i className="material-icons">
+                                  <EditIcon style={{ width: 20, height: 20 }} />
+                                </i>{" "}
+                              </button>
+                              <button
+                                className="delete"
+                                title="Delete"
+                                style={{ color: "red", border: "none" }}
+                                onClick={() => handleDelete(emp)}
+                              >
+                                <i className="material-icons">
+                                  <DeleteIcon
+                                    style={{ width: 20, height: 20 }}
+                                  />
+                                </i>{" "}
+                              </button>
                             </div>
                           </td>
                         </tr>
@@ -217,7 +221,7 @@ const Main = () => {
           <Create
             show={showCreateModal}
             handleClose={() => setShowCreateModal(false)}
-            fetchData={() => fetchProfiles()}    
+            fetchData={() => fetchProfiles()}
           />
 
           {/* Edit Modal */}

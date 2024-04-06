@@ -158,7 +158,7 @@ const Create = ({ show, handleClose }) => {
                 <option value="Product Management">Product Management</option>
                 <option value="Quality Assurance">Quality Assurance</option>
                 <option value="Sales and Marketing">
-                  Sales and Marketing:
+                  Sales and Marketing
                 </option>
                 <option value="Customer Support">Customer Support</option>
                 <option value="Human Resources">Human Resources</option>

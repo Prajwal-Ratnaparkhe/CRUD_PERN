@@ -55,6 +55,7 @@ const SignUp = () => {
             password: "",
             cpassword: "",
           });
+          window.location.reload();
         } catch (error) {
           toast.error(error.response.data.msg);
           console.log(error);
